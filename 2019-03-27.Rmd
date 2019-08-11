@@ -26,3 +26,9 @@ New_YorkDateTime <- with_tz(twDateTime,tzone="America/New_York")
 
 New_YorkDateTime
 ```
+
+```{r}
+as.integer(twDateTime)
+as.integer(New_YorkDateTime)
+```
+

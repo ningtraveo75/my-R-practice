@@ -1,0 +1,28 @@
+---
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(lubridate)
+dtObject<-ymd_hms("1970-01-01 00:02:53") 
+```
+
+```{r}
+Sys.timezone()
+```
+
+```{r}
+twDateTime <- ymd_hms("2019-03-18 14:04:00", tz="Asia/Taipei")
+
+twDateTime
+as.integer(twDateTime)
+```
+
+```{r}
+New_YorkDateTime <- with_tz(twDateTime,tzone="America/New_York")
+
+New_YorkDateTime
+```

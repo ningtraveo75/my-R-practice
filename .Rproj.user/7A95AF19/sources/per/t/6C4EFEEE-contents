@@ -47,3 +47,45 @@ as.integer(ymd("1970-01-01"))
 as.integer(ymd("1970-01-02"))
 as.integer(ymd("2019-03-11"))
 ```
+
+```{r}
+a <- c(1, 5, -3)
+b <- c(0.5, 12, 2)
+aL <- c(1L, 5L, -3L)
+bL <- c(-2L, -4L, 8L)
+```
+
+```{r}
+a+bL
+class(a+bL)
+
+aL+bL
+class(aL+bL)
+
+class(aL*bL)
+class(aL/bL)
+```
+
+```{r}
+a
+a+3
+```
+
+```{r}
+a^b
+a %% b
+```
+
+```{r}
+twDateTime <- ymd_hms("2019-03-18 14:04:00", tz="Asia/Taipei")
+twDateTime+1
+```
+
+```{r}
+dtnew<-ymd("2019-08-11")
+dtold<-ymd("2000-02-01")
+dtnew-dtold
+
+ymd("2019-08-11")-ymd("2000-02-01")
+```
+

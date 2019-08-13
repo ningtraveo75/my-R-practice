@@ -77,3 +77,4 @@ currency == "日圓JPY/USD"
 sum(currency == "日圓JPY/USD")
 ```
 
+# 5.4 Logical Operators

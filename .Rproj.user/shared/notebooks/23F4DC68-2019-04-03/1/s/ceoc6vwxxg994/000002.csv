@@ -1,0 +1,12 @@
+"0","library(readr)"
+"0","exData2 <- read_csv(""https://raw.githubusercontent.com/tpemartin/github-data/master/exData2.csv"")"
+"2","Parsed with column specification:
+cols(
+  ´Á¶¡ = [34mcol_date(format = """")[39m,
+  ¹ô§O = [31mcol_character()[39m,
+  ¶×²v = [32mcol_double()[39m
+)
+"
+"0","date <- as.character(exData2$æœŸé–“)"
+"0","currency <- exData2$å¹£åˆ¥"
+"0","exchangeRate <- exData2$åŒ¯çŽ‡"

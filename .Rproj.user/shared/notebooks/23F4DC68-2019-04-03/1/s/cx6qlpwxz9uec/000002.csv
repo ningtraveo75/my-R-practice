@@ -1,0 +1,7 @@
+"0","isExchangeRateNA <-"
+"0","  is.na(exchangeRate)"
+"0","sum(isExchangeRateNA)"
+"1","[1]"
+"1"," 408"
+"1","
+"

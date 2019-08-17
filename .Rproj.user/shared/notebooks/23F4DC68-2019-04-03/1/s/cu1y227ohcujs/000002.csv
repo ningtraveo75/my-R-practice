@@ -1,0 +1,2 @@
+"0","isNotNA <- !is.na(exchangeRate)"
+"0","isEURO  <- currency == ""歐元USD/EUR"""

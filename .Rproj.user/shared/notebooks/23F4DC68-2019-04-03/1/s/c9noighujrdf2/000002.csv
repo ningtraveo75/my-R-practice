@@ -1,0 +1,5 @@
+"0","sum(!is.na(exchangeRate) & currency == ""歐元USD/EUR"")"
+"1","[1]"
+"1"," 297"
+"1","
+"

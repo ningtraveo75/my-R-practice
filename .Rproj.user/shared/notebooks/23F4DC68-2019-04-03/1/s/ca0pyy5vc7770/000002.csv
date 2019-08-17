@@ -1,0 +1,8 @@
+"0","currency <- as.factor(currency)"
+"0",""
+"0","isEURO <- currency == ""歐元USD/EUR"""
+"0","sum(isEURO)"
+"1","[1]"
+"1"," 705"
+"1","
+"

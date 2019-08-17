@@ -160,6 +160,99 @@ class(date)
 
 1980-08-01之後的資料有多少筆
 ```{r}
+isAfter19800801 <-
+  date >= ymd("1980-08-01")
+isAfter19800801
+```
 
+```{r}
+sum(isAfter19800801)
+```
+
+幣別為“歐元USD/EUR”的資料有多少筆
+```{r}
+head(currency)
+
+isEURO <- currency == "歐元USD/EUR"
+sum(isEURO)
+```
+
+另解:有將currency轉成factor class
+```{r}
+currency <- as.factor(currency)
+
+isEURO <- currency == "歐元USD/EUR"
+sum(isEURO)
+```
+
+exchangeRate有多少筆NA
+```{r}
+isExchangeRateNA <-
+  is.na(exchangeRate)
+sum(isExchangeRateNA)
+```
+
+排除NA後，幣別為“歐元USD/EUR”的資料有多少筆
+```{r}
+isNotNA <- !is.na(exchangeRate)
+isEURO  <- currency == "歐元USD/EUR"
+```
+
+```{r}
+satisfyBoth <- isNotNA & isEURO
+sum(satisfyBoth)
+```
+
+另解
+```{r}
+sum(!is.na(exchangeRate) & currency == "歐元USD/EUR")
+```
+
+綜合練習2
+```{r}
+library(readr)
+transcriptDataFinal <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/transcriptDataFinal.csv")
+courseType <- transcriptDataFinal$`必選修類別（必∕選∕通）`
+major <- transcriptDataFinal$學系
+studentID <- transcriptDataFinal$學號
+grade <- transcriptDataFinal$學期成績
+```
+
+有多少筆資料是來自經濟學系
+```{r}
+sum(major == "經濟學系")
+```
+
+學號“5bdS6977b”同學修了多少課
+```{r}
+sum(studentID == "5bdS6977b")
+```
+
+請問學號“5bdS6977b”有多少科成績及格
+```{r}
+sum(studentID == "5bdS6977b" & grade>=60)
+```
+
+資料來自經濟學系學生且為選修課
+```{r}
+sum(major == "經濟學系" & courseType =="選")
+```
+
+經濟學系學生且必修課程中，成績不及格佔多少比例
+1.分母
+```{r}
+分母 <- sum(
+  major == "經濟學系" & courseType =="必"
+)
+```
+2.分子
+```{r}
+分子 <- sum(
+  major == "經濟學系" & courseType =="必" & grade<60
+)
+```
+3.比例
+```{r}
+分子/分母
 ```
 

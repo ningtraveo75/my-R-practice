@@ -1,0 +1,18 @@
+"0","library(readr)"
+"0","transcriptDataFinal <- read_csv(""https://raw.githubusercontent.com/tpemartin/github-data/master/transcriptDataFinal.csv"")"
+"2","Parsed with column specification:
+cols(
+  ¾Ç¸¹ = [31mcol_character()[39m,
+  ¾Ç©¡ = [32mcol_double()[39m,
+  ¾Ç¨t = [31mcol_character()[39m,
+  ¾Ç¦~ = [32mcol_double()[39m,
+  ¾Ç´Á = [32mcol_double()[39m,
+  ¾Ç´Á¦¨ÁZ = [32mcol_double()[39m,
+  ¾Ç¤À¼Æ = [32mcol_double()[39m,
+  `¥²¿ï­×Ãþ§O¡]¥²¢A¿ï¢A³q¡^` = [31mcol_character()[39m
+)
+"
+"0","courseType <- transcriptDataFinal$`å¿…é¸ä¿®é¡žåˆ¥ï¼ˆå¿…âˆ•é¸âˆ•é€šï¼‰`"
+"0","major <- transcriptDataFinal$å­¸ç³»"
+"0","studentID <- transcriptDataFinal$å­¸è™Ÿ"
+"0","grade <- transcriptDataFinal$å­¸æœŸæˆç¸¾"

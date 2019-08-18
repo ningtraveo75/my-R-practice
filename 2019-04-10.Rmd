@@ -149,3 +149,23 @@ typeof(aWithNames)
 aWithNames
 ```
 
+List
+```{r}
+b1<-list("a","b",c(1:10),TRUE)
+typeof(b1)
+b1
+```
+
+```{r}
+b2<-list(
+  第一個="a",
+  第二個="b",
+  第三個=c(1:10),
+  第四個=TRUE)
+```
+
+```{r}
+b1
+b2
+```
+

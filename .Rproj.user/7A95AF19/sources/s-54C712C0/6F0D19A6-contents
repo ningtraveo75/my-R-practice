@@ -1,0 +1,147 @@
+---
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(lubridate)
+library(stringr)
+```
+
+第一題
+```{r}
+major <- c("經濟系","法律系","社會系","經濟系")
+grade <- c(50,60,92,88)
+```
+
+1.1
+```{r}
+fromEcon <- str_detect(major,"經濟系")
+fromEcon
+```
+#正確答案
+```{r}
+fromEcon <- major == "經濟系"
+fromEcon
+```
+
+1.2
+```{r}
+sumEcon <- sum(fromEcon)
+sumEcon
+```
+
+1.3
+```{r}
+Econ <- which(major)
+meanEcon
+```
+#正確答案
+```{r}
+meanEcon <- sum(grade*fromEcon)/sum(fromEcon)
+meanEcon
+```
+
+第二題
+```{r}
+library(readr)
+podcastcompetition3 <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/podcastcompetition3.csv")
+submitTime <- podcastcompetition3$Timestamp
+head(submitTime)
+```
+
+2.1
+```{r}
+submitTime <- mdy_hms(submitTime)
+head(submitTime)
+```
+
+2.2
+```{r}
+twTime <- with_tz(submitTime,tz="Asia/Taipei")
+head(twTime)
+```
+
+2.3
+```{r}
+h <- hour(twTime)
+nightOwl <- h>=1 & h <=6
+nightOwl
+```
+
+2.4
+```{r}
+分母 <- length(nightOwl)
+分母
+分子 <- sum(h)
+分子
+nightOwlVoteShare <- 分母/分子
+nightOwlVoteShare
+```
+
+第三題
+```{r}
+library(readr)
+transcriptDataFinal <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/transcriptDataFinal.csv")
+studentID <- transcriptDataFinal$學號
+schoolYear <- transcriptDataFinal$學年
+grade <- transcriptDataFinal$學期成績
+credit <- transcriptDataFinal$學分數
+```
+
+3.1
+```{r}
+pass <- grade>=60
+earnedCredit <- pass*credit
+earnedCredit
+```
+#另解
+```{r}
+earnedCredit <- (grade >= 60)*credit
+earnedCredit <- as.integer(earnedCredit)
+earnedCredit
+```
+
+3.2
+```{r}
+credit100ChosenStudent <- 
+  sum(schoolYear==100 & studentID=="046S6f645")
+credit100ChosenStudent
+```
+#正確答案
+```{r}
+isChosenStudent <- studentID=="046S6f645"
+
+credit100ChosenStudent <- sum((isChosenStudent & schoolYear==100)*credit)
+credit100ChosenStudent
+```
+
+3.3
+```{r}
+earnedCredit100ChosenStudent <-
+  sum(schoolYear==100 & studentID=="046S6f645" & grade>=60)
+earnedCredit100ChosenStudent
+```
+#正確答案
+```{r}
+earnedCredit100ChosenStudent <- sum((isChosenStudent & schoolYear==100)*earnedCredit)
+earnedCredit100ChosenStudent
+```
+
+3.4
+```{r}
+`100ChosenStudent` <-
+  schoolYear==100 & studentID=="046S6f645" & earnedCredit>0
+gpa100ChosenStudent <- sum(`100ChosenStudent`*credit)/sum(credit)
+gpa100ChosenStudent
+```
+#正確答案
+```{r}
+subjectFitsCriteria <- (isChosenStudent & schoolYear==100 & credit >0 ) 
+
+gpa100ChosenStudent <- sum(subjectFitsCriteria*grade*credit)/sum(subjectFitsCriteria*credit)
+gpa100ChosenStudent
+```
+

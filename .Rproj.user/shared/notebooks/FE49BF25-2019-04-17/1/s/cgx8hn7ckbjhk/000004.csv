@@ -1,0 +1,8 @@
+"0","library(lubridate)"
+"0","commitCheck[[4]][[""commit""]][[""committer""]][[""date""]] -> commitDate"
+"0","commitDate <- ymd_hms(commitDate)"
+"0","with_tz(commitDate,tz=""Asia/Taipei"")"
+"1","[1]"
+"1"," ""2019-06-12 16:33:38 CST"""
+"1","
+"

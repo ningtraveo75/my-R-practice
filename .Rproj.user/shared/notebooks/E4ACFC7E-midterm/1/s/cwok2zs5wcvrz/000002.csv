@@ -1,0 +1,4 @@
+"0","# westYears"
+"0","m <- str_replace(twDates2,""年"",""-"")"
+"0","m2 <- str_sub(twDates2,1,3)"
+"0","westYears <- as.integer(m2)+1911"

@@ -1,0 +1,4 @@
+"0","# westDates"
+"0","m3 <- str_sub(m,4)"
+"0","twDates3 <- str_c(westYears,m3,""-1"")"
+"0","westDates <- ymd(twDates3)"

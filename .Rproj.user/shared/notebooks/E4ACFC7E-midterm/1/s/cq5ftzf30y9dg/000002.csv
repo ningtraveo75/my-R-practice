@@ -1,0 +1,4 @@
+"0","# logicBig"
+"0","logicBig <- x>50"
+"2","Error: object 'x' not found
+"

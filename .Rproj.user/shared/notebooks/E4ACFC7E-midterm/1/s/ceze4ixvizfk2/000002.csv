@@ -1,0 +1,3 @@
+"0","load(""sampledTranscriptData.Rda"")"
+"0","names(sampledTranscriptData) <- "
+"0","  c('學號','學期成績','學分數','學年','學期','必選修類別（必／選／通）','系級','科目名稱','年級','學屆')"

@@ -1,0 +1,3 @@
+"0","# sampledTranscriptData$學系 "
+"0","sampledTranscriptData$學系 <- "
+"0","  str_replace_all(sampledTranscriptData[['系級']],c(""1""="""",""2""="""",""3""="""",""4""=""""))"

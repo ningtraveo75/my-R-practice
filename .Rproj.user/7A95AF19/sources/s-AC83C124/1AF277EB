@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1566445473836.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "1AF277EB",
+    "lastKnownWriteTime" : 12948063680200752,
+    "last_content_update" : 1566445473836,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "2A97A6FC",
+        "caption" : "StuDF2",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=StuDF2&cache_key=2A97A6FC",
+        "displayedObservations" : 5,
+        "environment" : "",
+        "expression" : "StuDF2",
+        "object" : "StuDF2",
+        "preview" : 0,
+        "totalObservations" : 5,
+        "variables" : 3
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

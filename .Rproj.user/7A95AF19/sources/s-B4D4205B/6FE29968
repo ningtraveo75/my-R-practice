@@ -5,21 +5,21 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2818275454",
+    "hash" : "2844215398",
     "id" : "6FE29968",
-    "lastKnownWriteTime" : 1566491785,
-    "last_content_update" : 1566491785285,
+    "lastKnownWriteTime" : 1566548168,
+    "last_content_update" : 1566548168302,
     "path" : "D:/folder_D/研究所課程/資料科學程設（一）/GitHub/midterm/midterm.Rmd",
     "project_path" : null,
     "properties" : {
-        "cursorPosition" : "239,10",
-        "last_setup_crc32" : "5FFF3168950e905a",
-        "scrollLine" : "233"
+        "cursorPosition" : "163,37",
+        "last_setup_crc32" : "B4D4205B950e905a",
+        "scrollLine" : "155"
     },
     "read_only" : false,
     "read_only_alternatives" : [
     ],
-    "relative_order" : 1,
+    "relative_order" : 2,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_markdown"

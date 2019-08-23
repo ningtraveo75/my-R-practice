@@ -56,6 +56,12 @@ x
 logicBig <- x>50
 logicBig
 ```
+#正確答案
+```{r}
+logicBig <- (as.integer(x) > 50)
+
+logicBig
+```
 
 
 ## 2 list
@@ -76,6 +82,13 @@ load("submitTime.Rda")
 # nyTime
 submitTime <- mdy_hms(submitTime)
 nyTime <- with_tz(submitTime,tz="America/New_York")
+nyTime
+```
+#正確答案
+```{r}
+mdy_hms(submitTime)-> submitTime1
+with_tz(submitTime1,tzone = "America/New_York") -> nyTime
+as.character(nyTime) -> nyTime
 nyTime
 ```
 
@@ -108,7 +121,17 @@ pass <- randomGrades>=60
 passData <- list(randomGrades[pass],randomCredits[pass])
 passData
 ```
+#正確答案
+```{r}
+logiPass <- data3$成績>=60
+logiPass
 
+passData <- list(
+  成績 = data3$成績[logiPass],
+  學分數 = data3$學分數[logiPass]
+)
+passData
+```
 
 ## 5
 執行以下程式產生台灣民國年月字串物件twDates。
@@ -126,6 +149,10 @@ str_c("民國",str_pad(yy,3,"left","0"),"年",mm,"月") -> twDates
 twDates2 <-
   str_replace_all(twDates,c("民國"="","月"=""))
 twDates2
+```
+#另解
+```{r}
+str_replace_all(twDates,"(民國)|(月)","")
 ```
 
 ### 5.2 取出年份

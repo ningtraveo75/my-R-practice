@@ -132,7 +132,7 @@ variableNames
 logicFromEcon <- str_detect(transcriptData[["學系"]],"經濟學系")
 logicFromEcon
 ```
-#正確答案
+#另解
 ```{r}
 logicFromEcon <-
   transcriptData$學系 == "經濟學系"

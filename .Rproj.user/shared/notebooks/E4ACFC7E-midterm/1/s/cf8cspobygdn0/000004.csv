@@ -1,5 +1,5 @@
-"0","# logicBig"
-"0","logicBig <- x>50"
+"0","logicBig <- (as.integer(x) > 50)"
+"0",""
 "0","logicBig"
 "1"," [1]"
 "1","  TRUE"

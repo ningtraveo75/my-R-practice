@@ -1,5 +1,0 @@
-"0","# sampledTranscriptData"
-"0","sampledTranscriptData$學屆 <- "
-"0","  str_sub(sampledTranscriptData[['學號']],2,4)"
-"0","sampledTranscriptData$系碼 <-"
-"0","  str_sub(sampledTranscriptData[['學號']],5,6)"

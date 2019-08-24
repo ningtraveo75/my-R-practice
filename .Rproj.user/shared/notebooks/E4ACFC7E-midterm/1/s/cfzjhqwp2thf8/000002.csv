@@ -1,3 +1,0 @@
-"0","# changeMajorStudent"
-"0","changeMajorStudent <- sampledTranscriptData$學號[sampledTranscriptData$系碼 != 73]"
-"0","changeMajorStudent <-unique(changeMajorStudent)"

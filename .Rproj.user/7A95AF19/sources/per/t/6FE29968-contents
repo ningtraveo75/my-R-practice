@@ -173,7 +173,22 @@ m3 <- str_sub(m,4)
 twDates3 <- str_c(westYears,m3,"-1")
 westDates <- ymd(twDates3)
 ```
+#另解
+```{r}
+twDates2
+str_split(twDates2,"年") -> dataSplitList # 用年切開 年 月值
+dataSplitList
 
+map(dataSplitList,~.[[2]]) -> monthList # 取出每個元素第二位
+monthList
+
+unlist(monthList) -> monthVector # 將list疊成字串向量
+monthVector
+
+str_c(as.character(westYears),monthVector,"01",sep="-") -> westDates # 貼成YYYY-MM-DD字串格式
+westDates <- ymd(westDates) # 轉成dates
+westDates
+```
 
 ## 6 differen time zone
 執行以下程式引入invoiceList物件，其中「訂單時區」與「訂單時間(以訂單時區顯示)」的每筆資料是訂單來自時區及以該時區輸入的下單時間字串，「UTC時間」則是個目前無特別意義的UTC時間。
@@ -219,7 +234,15 @@ sampledTranscriptData裡每個元素底下的值都是一位同學在一門課�
 rightsubject <- sampledTranscriptData[['科目名稱']]=='科目204'
 grade <- as.integer(sampledTranscriptData[['學期成績']])
 fail <- sum(grade[rightsubject]<60)
-failRate <- fail/length(grade)
+failRate <- fail/length(grade) #少了length(grade[rightsubject])
+failRate
+```
+#正確答案
+```{r}
+(sampledTranscriptData$科目名稱 == "科目204") -> chosenSubjectLogi
+sampledTranscriptData$學期成績[chosenSubjectLogi] -> chosenGrades
+sum(chosenGrades<60)/length(chosenGrades) -> failRate
+
 failRate
 ```
 
@@ -235,6 +258,8 @@ sampledTranscriptData$學屆 <-
   str_sub(sampledTranscriptData[['學號']],2,4)
 sampledTranscriptData$系碼 <-
   str_sub(sampledTranscriptData[['學號']],5,6)
+head(sampledTranscriptData$學屆)
+head((sampledTranscriptData$系碼))
 ```
 
 ### 7.3 產生學系 str_replace_all
@@ -244,14 +269,42 @@ sampledTranscriptData$系碼 <-
 # sampledTranscriptData$學系 
 sampledTranscriptData$學系 <- 
   str_replace_all(sampledTranscriptData[['系級']],c("1"="","2"="","3"="","4"=""))
+
+head(sampledTranscriptData$系級)
+head(sampledTranscriptData$學系)
+```
+#另解
+```{r}
+sampledTranscriptData$學系 <- 
+  str_replace_all(sampledTranscriptData[['系級']],"[:digit:]","")
+
+head(sampledTranscriptData$學系)
 ```
 
 ### 7.4 轉系生
 學號是一入學就決定，不管後來有沒有轉系。 請找出外系轉入經濟系的學生學號，並存成changeMajorStudent答案物件。(由於資料一筆為一科成績，所以學號會重覆出現，要存入答案物件前請用`unique()`去除重覆學號)
 ```{r ans74}
 # changeMajorStudent
-changeMajorStudent <- sampledTranscriptData$學號[sampledTranscriptData$系碼 != 73]
+changeMajorStudent <- sampledTranscriptData$學號[sampledTranscriptData$系碼 != 73] #少了& sampledTranscriptData$學系=="經濟學系"
 changeMajorStudent <-unique(changeMajorStudent)
+
+head(changeMajorStudent)
+```
+#正確答案
+```{r}
+(sampledTranscriptData$系碼!="73" & 
+   sampledTranscriptData$學系=="經濟學系") -> logiCheck
+unique(sampledTranscriptData$學號[logiCheck]) -> changeMajorStudent
+
+changeMajorStudent
+```
+##挑戰(做一個學系與系碼的對照表)(練習/非正確答案)
+```{r}
+list(
+  學系=unique(sampledTranscriptData$學系),
+  系碼=unique(sampledTranscriptData$系碼)
+) -> a
+a
 ```
 
 ### 7.5 學期平均成績

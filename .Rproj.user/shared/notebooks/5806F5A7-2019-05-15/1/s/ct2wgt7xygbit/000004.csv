@@ -1,0 +1,5 @@
+"0","exampleDF <- data.frame("
+"0","  exchangeRate=c(22,3,3,2,7,12,13),"
+"0","  isAsiaCrisis=c(T,T,F,F,F,T,T)"
+"0",")"
+"0","exampleDF"

@@ -1,0 +1,4 @@
+"0","supply_fun <- function(a,b,P){"
+"0","  Qs <- a+b*P"
+"0","  return(Qs)"
+"0","}"

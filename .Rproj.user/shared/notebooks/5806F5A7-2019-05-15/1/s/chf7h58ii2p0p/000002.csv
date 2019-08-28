@@ -1,0 +1,4 @@
+"0","plactice <- function(x,a){"
+"0","  value <- a+x"
+"0","  return(value)"
+"0","}"

@@ -1,0 +1,4 @@
+"0","demand_fun <- function(c,d,P){"
+"0","  Qd <- c-d*P"
+"0","  return(Qd)"
+"0","}"

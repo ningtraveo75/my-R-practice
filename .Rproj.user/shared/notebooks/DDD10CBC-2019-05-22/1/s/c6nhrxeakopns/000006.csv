@@ -1,0 +1,7 @@
+"0","fromDateTime <- ymd_hms(""1973-02-21 12:05:22"",tz=""America/New_York"")"
+"0","toDateTime <- with_tz(fromDateTime,tz=""Asia/Taipei"")"
+"0","toDateTime"
+"1","[1]"
+"1"," ""1973-02-22 01:05:22 CST"""
+"1","
+"

@@ -1,0 +1,5 @@
+"0","ymd_hms_tzChange <- function(input,fromTzone,toTzone){"
+"0","  fromDateTime <- ymd_hms(input,tz=fromTzone)"
+"0","  toDateTime <- with_tz(fromDateTime,tz=toTzone)"
+"0","  return(toDateTime)"
+"0","}"

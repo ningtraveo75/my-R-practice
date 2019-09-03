@@ -1,0 +1,6 @@
+"0","date_convert_twYM <- function(twDates,dd=""01""){"
+"0","  yyyy<-as.integer(str_extract(twDates,""(?<=(民國))[:digit:]+""))+1911"
+"0","  mm<-str_extract(twDates,""[:digit:]+(?=月)"")"
+"0","  yyyymmdd <- ymd(str_c(yyyy,mm,dd,sep=""-""))"
+"0","  return(yyyymmdd)"
+"0","}"

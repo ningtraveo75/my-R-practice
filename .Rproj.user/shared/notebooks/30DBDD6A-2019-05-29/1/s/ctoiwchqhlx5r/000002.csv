@@ -1,0 +1,6 @@
+"0","nowAnnounce <- function(){"
+"0","  currentDateTime <- Sys.time()"
+"0","  hh<-hour(currentDateTime)"
+"0","  mm<-minute(currentDateTime)"
+"0","  cat(""現在是"",hh,""點"",mm,""分"")"
+"0","}"

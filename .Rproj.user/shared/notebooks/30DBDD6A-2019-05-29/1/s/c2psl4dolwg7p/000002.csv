@@ -1,0 +1,3 @@
+"0","textbookURL <- function(){"
+"0","  browseURL(""https://via.hypothes.is/https://bookdown.org/tpemartin/ntpu-programming-for-data-science/"")"
+"0","}"

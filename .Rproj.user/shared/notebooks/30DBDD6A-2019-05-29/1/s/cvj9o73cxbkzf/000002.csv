@@ -1,0 +1,4 @@
+"0","if(a>2) {"
+"0","  print(""a大於2"")"
+"0","}"
+"2","the condition has length > 1 and only the first element will be used"

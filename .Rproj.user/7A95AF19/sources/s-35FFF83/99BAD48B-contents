@@ -1,0 +1,132 @@
+---
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(lubridate); library(stringr); library(purrr); library(readr)
+```
+
+第一題
+```{r}
+library(readr)
+finStatement <- read_csv("http://mopsfin.twse.com.tw/opendata/t187ap06_O_ci.csv")
+```
+
+1.1
+```{r}
+loss1 <- finStatement$`營業利益（損失）`<0
+loss1Companies <- finStatement$`公司名稱`[loss1]
+loss1Companies
+```
+
+1.2
+```{r}
+loss2 <- finStatement$`基本每股盈餘（元）`<0
+loss2Companies <- finStatement$`公司名稱`[loss2]
+loss2Companies
+```
+
+1.3
+```{r}
+only1Loss <- finStatement$`營業利益（損失）`<0 | finStatement$`基本每股盈餘（元）`<0
+only1LossCompanies <- finStatement$`公司名稱`[only1Loss]
+only1LossCompanies
+```
+#正確答案
+```{r}
+xor(loss1,loss2) -> logiOnly1Loss
+finStatement$公司名稱[logiOnly1Loss] -> only1LossCompanies
+only1LossCompanies
+```
+
+1.4
+```{r}
+only1Loss <- finStatement[,"營業利益（損失）"]<0 | finStatement[,"基本每股盈餘（元）"]<0
+only1LossCompanies <- finStatement$`公司名稱`[only1Loss]
+
+as.data.frame(only1LossCompanies, stringsAsFactors = FALSE)
+only1LossCompanies
+```
+#正確答案
+```{r}
+finStatement[logiOnly1Loss,] -> subsample
+subsample
+```
+
+第二題
+```{r}
+library(httr)
+exhibitionList <- content(GET("https://cloud.culture.tw/frontsite/trans/SearchShowAction.do?method=doFindTypeJ&category=6"))
+```
+
+```{r}
+str(exhibitionList[[1]])
+```
+
+2.1
+```{r}
+numExhibitions <- length(exhibitionList)
+numExhibitions
+```
+
+2.2
+```{r}
+df_oneShow <- data.frame(
+  title=exhibitionList[[1]][["title"]],
+  time=exhibitionList[[1]][["showInfo"]][[1]][["time"]],
+  location=exhibitionList[[1]][["showInfo"]][[1]][["location"]],
+  locationName=exhibitionList[[1]][["showInfo"]][[1]][["locationName"]],
+  price=exhibitionList[[1]][["showInfo"]][[1]][["price"]],
+  endTime=exhibitionList[[1]][["showInfo"]][[1]][["endTime"]],
+  sourceWebName=exhibitionList[[1]][["sourceWebName"]],
+  stringsAsFactors=FALSE
+)
+
+names(df_oneShow)
+```
+
+2.3
+```{r}
+dataframe_show_info <- function(exhibitionInput){
+
+  df_oneShow <- data.frame(
+    title=exhibitionInput[["title"]],
+    time=exhibitionInput[["showInfo"]][[1]][["time"]],
+    location=exhibitionInput[["showInfo"]][[1]][["location"]],
+    locationName=exhibitionInput[["showInfo"]][[1]][["locationName"]],
+    price=exhibitionInput[["showInfo"]][[1]][["price"]],
+    endTime=exhibitionInput[["showInfo"]][[1]][["endTime"]],
+    sourceWebName=exhibitionInput[["sourceWebName"]],
+    stringsAsFactors=FALSE
+  )
+
+return(df_oneShow)
+}
+dataframe_show_info
+```
+
+```{r}
+dataframe_show_info(exhibitionList[[5]])
+```
+
+2.4
+```{r}
+library(purrr)
+map_dfr(exhibitionList,dataframe_show_info) -> df_allShows
+```
+
+```{r}
+df_allShows$sourceWebName <- as.factor(df_allShows$sourceWebName)
+levels(df_allShows$sourceWebName)
+```
+
+2.5
+```{r}
+logic <- df_allShows$sourceWebName=="全國藝文活動資訊系統"
+totalCount <- sum(logic)
+totalCount
+```
+

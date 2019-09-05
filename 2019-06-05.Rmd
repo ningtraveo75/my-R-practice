@@ -115,7 +115,7 @@ for (i in seq_along(gmailAddress)) {
   print(gmailAddress[[i]])
 }
 ```
-
+(以下為練習，可能有錯)
 一、
 ```{r}
 library(stringr)
@@ -151,4 +151,3 @@ for(i in seq_along(gmailAddress)){
   } 
 }
 ```
-

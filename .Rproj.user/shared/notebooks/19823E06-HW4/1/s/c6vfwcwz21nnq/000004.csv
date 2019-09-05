@@ -1,0 +1,7 @@
+"0","df_commit <- data.frame("
+"0","  author=oneCommitRecord$commit$author$name,"
+"0","  committer=oneCommitRecord$commit$committer$name,"
+"0","  commitDate=oneCommitRecord$commit$committer$date,"
+"0","  sha=oneCommitRecord$sha,"
+"0","  stringsAsFactors = F"
+"0",")"

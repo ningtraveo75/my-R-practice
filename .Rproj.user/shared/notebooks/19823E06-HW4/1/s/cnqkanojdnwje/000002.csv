@@ -1,0 +1,3 @@
+"0","library(httr) "
+"0","#commitHistory <- content(GET(""https://api.github.com/repos/r-hub/cranlogs/commits""))"
+"0","load(url(""https://www.dropbox.com/s/qnz9paigf61yjus/commitHistory.Rda?raw=1""))"

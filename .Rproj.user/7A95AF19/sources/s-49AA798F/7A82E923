@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1567647604663.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "813995643",
+    "id" : "7A82E923",
+    "lastKnownWriteTime" : 1567651630,
+    "last_content_update" : 1567651630856,
+    "path" : "D:/folder_D/研究所課程/資料科學程設（一）/GitHub/my-R-practice/2019-06-05.Rmd",
+    "project_path" : "2019-06-05.Rmd",
+    "properties" : {
+        "cursorPosition" : "114,23",
+        "last_setup_crc32" : "49AA798Fbb338d19",
+        "scrollLine" : "103",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

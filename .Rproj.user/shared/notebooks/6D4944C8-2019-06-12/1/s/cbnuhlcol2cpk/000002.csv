@@ -1,0 +1,3 @@
+"0","load(url(""https://www.dropbox.com/s/duh5aaqgl2f5m3z/loopTranscriptData.Rda?raw=1""))"
+"0","studentIds <- unique(transcriptDataFinal$學號) # 全部可能學號"
+"0","studentIds5 <- studentIds[1:5] # 前5筆學號"

@@ -1,0 +1,201 @@
+---
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(lubridate); library(stringr); library(purrr); library(readr);
+```
+
+第一題
+1.1
+```{r}
+homeworkData <- data.frame(
+  姓名=c("小明","小花","小新"),
+  作業1分數=c(10,9,5),
+  作業2分數=c(10,10,9),
+  stringsAsFactors=F
+)
+homeworkData
+```
+
+1.2
+```{r}
+email_content_fun <- function(homeworkData){
+  student <- homeworkData$姓名
+  y1 <- homeworkData$作業1分數
+  y2 <- homeworkData$作業2分數
+  emailText <-
+  str_c("親愛的",student,"好，您的作業成績為：作業1,", y1,"分; 作業2,", y2,"分")
+  return(emailText)
+}
+```
+#另解
+```{r}
+emailText <-
+  "親愛的student好，您的作業成績為：作業1, y1分; 作業2, y2分"
+
+email_content_fun <- function(input){
+  str_replace(emailText, "student", input$姓名) -> emailTextOut
+  str_replace(emailTextOut,"y1", as.character(input$作業1分數)) -> emailTextOut
+  str_replace(emailTextOut,"y2", as.character(input$作業2分數)) -> emailTextOut
+  return(emailTextOut)
+}
+```
+
+```{r}
+email_content_fun(homeworkData)
+```
+
+第二題
+```{r}
+str_smallClosest <- function(chrNumber,criticalNumber){
+  chrNumber <- as.numeric(chrNumber)
+  small <- chrNumber<criticalNumber
+  maximam <- max(chrNumber[small])
+  maximam <- as.character(maximam)
+  return(maximam)
+}
+```
+
+```{r}
+str_smallClosest(c("10","25","11"),12)
+```
+
+第三題
+3.1
+```{r}
+EconCourseSelectionInfo <- list(
+  "101" <- list(
+      url <- "http://www.econ.ntpu.edu.tw/econ/files/Way/2016072195021.doc"),
+  "104" <- list(
+      url <- "http://www.econ.ntpu.edu.tw/econ/files/Way/2016072195041.doc"),
+  "105" <- list(
+      url <- "http://www.econ.ntpu.edu.tw/econ/files/Way/20170516144353.doc"),
+  "107" <- list(
+      url <- "http://www.econ.ntpu.edu.tw/econ/files/Way/20180518121643.pdf")
+)
+
+EconCourseSelectionInfo
+```
+#正確答案
+```{r}
+EconCourseSelectionInfo <- list(
+    "101"=list(
+      url="http://www.econ.ntpu.edu.tw/econ/files/Way/2016072195021.doc"
+    ),
+    "104"=list(
+      url="http://www.econ.ntpu.edu.tw/econ/files/Way/2016072195041.doc"
+    ),
+    "105"=list(
+      url="http://www.econ.ntpu.edu.tw/econ/files/Way/20170516144353.doc"
+    ),
+    "107"=list(
+      url="http://www.econ.ntpu.edu.tw/econ/files/Way/20180518121643.pdf"
+    )
+  )
+
+EconCourseSelectionInfo
+```
+
+3.2
+```{r}
+search_courseRules <- function(entranceYear,EconCourseSelectionInfo){
+  if(entranceYear>=101 & entranceYear<104){
+    return(EconCourseSelectionInfo[["101"]][["url"]])
+  } else if(entranceYear==104){
+    return(EconCourseSelectionInfo[["104"]][["url"]])
+  } else if(entranceYear>=105 & entranceYear<107){
+    return(EconCourseSelectionInfo[["105"]][["url"]])
+  } else if(entranceYear>=107){
+    return(EconCourseSelectionInfo[["107"]][["url"]])
+  } else{
+    message("很抱歉沒有您入學年的資訊，請打系辦電話")
+  }
+}
+```
+
+```{r}
+search_courseRules(106,EconCourseSelectionInfo)
+```
+
+3.3
+```{r}
+search_courseRules_flexible <- function(entranceYear,courseSelectionInfo){
+  
+}
+```
+#正確答案
+```{r}
+search_courseRules_flexible <- function(entranceYear,courseSelectionInfo){
+  names(courseSelectionInfo) -> ruleYears
+  ## 以下借用第2題答案但小修改
+  as.numeric(ruleYears) -> numNumber
+  logiTrue <- numNumber <= as.numeric(entranceYear)
+  if(any(logiTrue)){
+    max(numNumber[logiTrue]) -> maxNum
+    return(courseSelectionInfo[[as.character(maxNum)]]$url)
+  } else {
+    return("很抱歉沒有您入學年的資訊，請打系辦電話")
+  }
+}
+
+search_courseRules_flexible
+```
+
+3.4
+```{r}
+EconCourseSelectionInfo2 <- EconCourseSelectionInfo
+names(EconCourseSelectionInfo2) <- c("101","104","106","107")
+EconCourseSelectionInfo2[["107"]]$線上志願選課辦法 <- "http://www.econ.ntpu.edu.tw/econ/files/Way/20180712122237.pdf"
+```
+#另解
+```{r}
+names(EconCourseSelectionInfo2)[[3]] <- "106"
+```
+
+第四題
+```{r}
+load(url("https://www.dropbox.com/s/mk2zmcc2wjkwf7w/invoiceList.Rda?raw=true"))
+c('訂單時區','訂單時間(以訂單時區顯示)','UTC時間') -> names(invoiceList)
+```
+
+```{r}
+invoiceList$`訂單時間(以訂單時區顯示)` <- ymd_hms(invoiceList$`訂單時間(以訂單時區顯示)`)
+
+nyLogi <- invoiceList$訂單時區=="America/New_York"
+tpLogi <- invoiceList$訂單時區=="Asia/Taipei"
+invoiceList$UTC時間[nyLogi] <- with_tz(invoiceList$`訂單時間(以訂單時區顯示)`[nyLogi],tzone="UTC")
+invoiceList$UTC時間[tpLogi] <- with_tz(invoiceList$`訂單時間(以訂單時區顯示)`[tpLogi],tzone="UTC")
+```
+#正確答案
+```{r}
+(invoiceList$訂單時區=="America/New_York") -> nyLogical
+(invoiceList$訂單時區=="Asia/Taipei") -> tpLogical
+
+invoiceList$UTC時間[nyLogical] <-
+  with_tz(ymd_hms(invoiceList$`訂單時間(以訂單時區顯示)`[nyLogical],
+          tz="America/New_York"),tzone="UTC")
+invoiceList$UTC時間[tpLogical] <-
+  with_tz(ymd_hms(invoiceList$`訂單時間(以訂單時區顯示)`[tpLogical],
+          tz="Asia/Taipei"),tzone="UTC")
+
+invoiceList 
+```
+
+第五題
+```{r}
+load(url("https://www.dropbox.com/s/j4k4por0rl6s317/sampledTranscriptData.Rda?raw=true"))
+c('學號','學期成績','學分數','學年','學期','必選修類別（必／選／通）','系級','科目名稱','年級','學屆') ->
+  names(sampledTranscriptData)
+```
+
+```{r}
+changestuLogi <- str_sub(sampledTranscriptData$學號,5,6)!="73" & str_detect(sampledTranscriptData$系級,"經濟學系")
+changeMajorStudent <- unique(sampledTranscriptData$學號[changestuLogi])
+changeMajorStudent
+
+changeMajorStudent
+```

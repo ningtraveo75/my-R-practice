@@ -1,0 +1,6 @@
+"0","invoiceList$`訂單時間(以訂單時區顯示)` <- ymd_hms(invoiceList$`訂單時間(以訂單時區顯示)`)"
+"0",""
+"0","nyLogi <- invoiceList$訂單時區==""America/New_York"""
+"0","tpLogi <- invoiceList$訂單時區==""Asia/Taipei"""
+"0","invoiceList$UTC時間[nyLogi] <- with_tz(invoiceList$`訂單時間(以訂單時區顯示)`[nyLogi],tzone=""UTC"")"
+"0","invoiceList$UTC時間[tpLogi] <- with_tz(invoiceList$`訂單時間(以訂單時區顯示)`[tpLogi],tzone=""UTC"")"

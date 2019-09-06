@@ -1,0 +1,8 @@
+"0","changestuLogi <- str_sub(sampledTranscriptData$學號,5,6)!=""73"" & str_detect(sampledTranscriptData$系級,""經濟學系"")"
+"0","changeMajorStudent <- unique(sampledTranscriptData$學號[changestuLogi])"
+"0","changeMajorStudent"
+"1","[1]"
+"1"," ""410274a7a9"""
+"1"," ""4102742ce8"""
+"1","
+"

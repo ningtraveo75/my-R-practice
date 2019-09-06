@@ -1,0 +1,8 @@
+"0","email_content_fun <- function(homeworkData){"
+"0","  student <- homeworkData$姓名"
+"0","  y1 <- homeworkData$作業1分數"
+"0","  y2 <- homeworkData$作業2分數"
+"0","  emailText <-"
+"0","  str_c(""親愛的"",student,""好，您的作業成績為：作業1,"", y1,""分; 作業2,"", y2,""分"")"
+"0","  return(emailText)"
+"0","}"

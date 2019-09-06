@@ -1,0 +1,80 @@
+---
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 3
+##3.1
+```{r}
+EconCourseSelectionInfo <- list(
+    "101"=list(
+      url="http://www.econ.ntpu.edu.tw/econ/files/Way/2016072195021.doc"
+    ),
+    "104"=list(
+      url="http://www.econ.ntpu.edu.tw/econ/files/Way/2016072195041.doc"
+    ),
+    "105"=list(
+      url="http://www.econ.ntpu.edu.tw/econ/files/Way/20170516144353.doc"
+    ),
+    "107"=list(
+      url="http://www.econ.ntpu.edu.tw/econ/files/Way/20180518121643.pdf"
+    )
+  )
+
+EconCourseSelectionInfo
+```
+
+##3.3
+
+search_courseRules_flexible(entranceYear,courseSelectionInfo)
+
+```{r}
+# 設定測試input值
+entranceYear <- 103
+courseSelectionInfo <- EconCourseSelectionInfo
+
+# 1. 從courseSelectionInfo裡可得到文件頒布學年
+names(courseSelectionInfo) -> ruleYears
+# 2. 再從這些文件學年找出那些是在entranceYear之前頒布的
+as.numeric(ruleYears) -> numNumber
+logiTrue <- numNumber <= as.numeric(entranceYear) 
+if(any(logiTrue)){
+  # 3. 符合上述條件的文件裡，選出頒布學年最近的一份回傳其url
+  # numNumber[logiTrue] #符合上述條件的文件學年
+  max(numNumber[logiTrue]) -> maxNum #選出頒布學年最近的一份
+  courseSelectionInfo[[as.character(maxNumber)]]$url -> output
+} else{
+  output <- "很抱歉沒有您入學年的資訊，請打系辦電話"
+}
+```
+
+```{r}
+search_courseRules_flexible <- function(entranceYear,courseSelectionInfo){
+  # 1. 從courseSelectionInfo裡可得到文件頒布學年
+  names(courseSelectionInfo) -> ruleYears
+  # 2. 再從這些文件學年找出那些是在entranceYear之前頒布的
+  as.numeric(ruleYears) -> numNumber
+  logiTrue <- numNumber <= as.numeric(entranceYear) 
+  if(any(logiTrue)){
+    # 3. 符合上述條件的文件裡，選出頒布學年最近的一份回傳其url
+    # numNumber[logiTrue] #符合上述條件的文件學年
+    max(numNumber[logiTrue]) -> maxNum #選出頒布學年最近的一份
+    courseSelectionInfo[[as.character(maxNum)]]$url -> output
+  } else{
+    output <- "很抱歉沒有您入學年的資訊，請打系辦電話"
+  }
+  return(output)
+}
+```
+
+```{r}
+search_courseRules_flexible(102,EconCourseSelectionInfo)
+```
+
+```{r}
+ruleYears
+logiTrue
+```
+

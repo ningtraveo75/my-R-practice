@@ -1,0 +1,7 @@
+"0","str_smallClosest <- function(chrNumber,criticalNumber){"
+"0","  chrNumber <- as.numeric(chrNumber)"
+"0","  small <- chrNumber<criticalNumber"
+"0","  maximam <- max(chrNumber[small])"
+"0","  maximam <- as.character(maximam)"
+"0","  return(maximam)"
+"0","}"
